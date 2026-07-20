@@ -1,0 +1,22 @@
+<main class="main">
+  <button (click)="addApplication()">Add application</button>
+  <select [value]="selectedStatus" (change)="updateFilter($event)">
+    <option value="">nichts</option>
+    <option value="beworben">beworben</option>
+    <option value="Interview">Interview</option>
+    <option value="Zusage">Zusage</option>
+    <option value="Absage">Absage</option>
+  </select>
+  @for (app of filteredApplications; track app.firma){
+  <p>
+    {{app.firma}} {{app.position}} {{app.datum}}
+    <button (click)="deleteApplication(app.firma)">delete application</button>
+    <select [value]="app.status" (change)="updateStatus(app.firma,$event)">
+      <option value="beworben">beworben</option>
+      <option value="Interview">Interview</option>
+      <option value="Zusage">Zusage</option>
+      <option value="Absage">Absage</option>
+    </select>
+  </p>
+  }
+</main>
